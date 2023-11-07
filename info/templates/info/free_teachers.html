@@ -1,0 +1,27 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
+
+    <!-- Bootstrap core CSS-->
+<link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<!-- Custom fonts for this template-->
+<link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <h2 class="text-center">Список свободных учителей</h2>
+    <ul class="list-group">
+        {% for t in ft_list %}
+            <li class="list-group-item list-group-item-success">{{ t }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>homepage</title>
+      {% load static %}
+
+    <!-- Bootstrap core CSS -->
+      <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+      <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
+          <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">CollegeERP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-capitalize">{{ request.user.student.name }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Выход</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4">
+        <h1 class="display-3 text-capitalize">Здравствуйте, {{ request.user.teacher.name }}</h1>
+{#        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>#}
+{#        <a href="#" class="btn btn-primary btn-lg">Пуск</a>#}
+      </header>
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 't_clas' request.user.teacher.id 1 %}">
+                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Посещаемость</h4>
+              <p class="card-text">Введите посещаемость учащихся в зависимости от класса, в котором они учатся. Существует также возможность редактировать посещаемость всего класса или учащегося индивидуально.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 't_clas' request.user.teacher.id 1 %}"> Введите посещаемость</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 't_clas' request.user.teacher.id 2 %}">
+                <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Оценки</h4>
+              <p class="card-text">Введите оценки учащихся в зависимости от класса, в котором они учатся. Сюда входят внутренние занятия, мероприятия. Оценки учащихся также можно редактировать.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 't_clas' request.user.teacher.id 2 %}">Введите оценки</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+              <a href="{% url 't_timetable' request.user.teacher.id %}">
+                <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Расписание</h4>
+              <p class="card-text">Посмотреть расписание в табличной форме. Для конкретного класса указывается список учителей, которые свободны на данный момент.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 't_timetable' request.user.teacher.id %}">Показать расписание</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <a href="{% url 't_clas' request.user.teacher.id 3 %}">
+                <img class="card-img-top" src="{% static 'info/images/reports.png' %}" alt="">
+            </a>
+            <div class="card-body">
+              <h4 class="card-title">Отчет</h4>
+              <p class="card-text">Формируйте отчеты для каждого класса. Эти отчеты включают в себя создание таблицы, состоящей из учащихся, принадлежащих к этому классу, а также их соответствующих CIE и посещаемости.</p>
+            </div>
+            <div class="card-footer">
+              <a href="{% url 't_clas' request.user.teacher.id 3 %}" class="btn btn-primary">Сделать отчет</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Хотите выйти?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Выберите «Выход» ниже, если вы готовы завершить текущий сеанс.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Отмена</button>
+            <a class="btn btn-primary" href="/accounts/logout">Выход</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+
+
+      <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>
